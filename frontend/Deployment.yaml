@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: frontend
+  name: frontend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: frontend
+  template:
+    metadata:
+      labels:
+        run: frontend
+    spec:
+      containers:
+      - image: abzaver/journal-server:0.1
+        imagePullPolicy: IfNotPresent
+        name: frontend
+        resources:
+          requests:
+            cpu: "1.0"
+            memory: "1G"
+          limits:
+            cpu: "1.0"
+            memory: "1G"
+        env:
+          - name: JOURNAL_ENTRIES
+            valueFrom:
+              configMapKeyRef:
+                name: frontend-config
+                key: journalEntries
