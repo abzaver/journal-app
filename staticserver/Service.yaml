@@ -2,18 +2,20 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: fileserver
-  name: fileserver
+    app: staticserver
+  name: staticserver
   namespace: default
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
+    name: http
   - port: 443
     protocol: TCP
     targetPort: 443
+    name: https
   selector:
-    app: fileserver
+    app: staticserver
   sessionAffinity: None
   type: ClusterIP

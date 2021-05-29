@@ -36,7 +36,7 @@ spec:
               configMapKeyRef:
                 name: frontend-config
                 key: journalEntries
-        volumes:
-          - name: passwd-volume
-            secret:
-              secretName: redis-passwd
+      volumes:
+        - name: passwd-volume
+          secret:
+            secretName: redis-passwd

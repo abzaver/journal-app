@@ -16,7 +16,7 @@ spec:
         app: staticserver
     spec:
       containers:
-      - image: abzaver/journal-static-files:0.1
+      - image: abzaver/journal-static-files:0.2
         imagePullPolicy: Always
         name: staticserver
         terminationMessagePath: /dev/termination-log
